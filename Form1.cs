@@ -85,5 +85,14 @@ namespace Meotdy09_14GitHub
                 MessageBox.Show("Počet jiných " + pocetJinychZnaku);
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string s1 = textBox8.Text, s2 = textBox9.Text;
+            int pocOdlis, indexPrvOdlis;
+            bool jeIdenticke = Metody.Identicke(s1, s2, out pocOdlis,out indexPrvOdlis);
+            if (jeIdenticke) MessageBox.Show("Zadané řetězce jsou identické.");
+            else MessageBox.Show("Zadané řetězce nejsou identické.\nPočet odlišností: " + pocOdlis + "\nIndex první odlišnosti: " + indexPrvOdlis);
+        }
     }
 }

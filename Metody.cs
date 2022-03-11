@@ -146,5 +146,37 @@ namespace Meotdy09_14GitHub
             }
             return jealfanum;
         }
+        public static bool Identicke(string s1, string s2, out int pocOdlis, out int indexPrvOdlis)
+        {
+            pocOdlis = 0;
+            indexPrvOdlis = -1;
+            bool jeIdenticke = true;
+            string sKybl;
+            if(s1.Length != s2.Length)
+            {
+                jeIdenticke = false;
+                if (s1.Length > s2.Length)
+                {
+                    sKybl = s1;
+                    s1 = s2;
+                    s2 = sKybl;
+                }
+                pocOdlis += (s2.Length - s1.Length);
+            }
+            for(int i = 0; i < s1.Length; i++)
+            {
+                if(s1[i]!=s2[i])
+                {
+                    jeIdenticke = false;
+                    pocOdlis++;
+                    if (indexPrvOdlis == -1) indexPrvOdlis = i;
+                }
+            }
+            if(!jeIdenticke && indexPrvOdlis == -1)
+            {
+                indexPrvOdlis = s1.Length;
+            }
+            return jeIdenticke;
+        }
     }
 }
