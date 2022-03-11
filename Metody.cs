@@ -93,5 +93,58 @@ namespace Meotdy09_14GitHub
             }
             return pocSlov;
         }
+
+        public static bool ObsahujeSlovo(string text, out string nejdelsiSlovo, out string nejkratsiSlovo)
+        {
+            bool obsahujeslovo = false;
+            nejdelsiSlovo = "";
+            nejkratsiSlovo = text;
+            int pocetPismenMax = 0;
+            int pocetPismenMin = text.Length;
+            char[] separators = { ' ' };
+            string[] poleSlov = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string s in poleSlov)
+            {
+                if (s.Length >= 1)
+                {
+                    obsahujeslovo = true;
+                }
+                if (s.Length > pocetPismenMax)
+                {
+                    pocetPismenMax = s.Length;
+                    nejdelsiSlovo = s;
+                }
+                if (s.Length < pocetPismenMin)
+                {
+                    pocetPismenMin = s.Length;
+                    nejkratsiSlovo = s;
+                }
+            }
+            return obsahujeslovo;
+        }
+
+        public static bool JeAlfanum(string s, out int pocetMalychPismen, out int pocetVelkychPismen, out int pocetJinychZnaku)
+        {
+            bool jealfanum = false;
+            pocetMalychPismen = 0;
+            pocetVelkychPismen = 0;
+            pocetJinychZnaku = 0;
+
+            for (int i = 0; i < s.Length; ++i)
+            {
+                if (Char.IsLetterOrDigit(s[i]))
+                {
+                    jealfanum = true;
+                    if (Char.IsUpper(s[i])) ++pocetVelkychPismen;
+                    else if (Char.IsLower(s[i])) ++pocetMalychPismen;
+                }
+                else
+                {
+                    ++pocetJinychZnaku;
+                    jealfanum = false;
+                }
+            }
+            return jealfanum;
+        }
     }
 }

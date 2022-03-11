@@ -49,5 +49,41 @@ namespace Meotdy09_14GitHub
             int pocetSlov = Metody.PocetSlov(ref s);
             MessageBox.Show("pocet slov je: " + pocetSlov + "\nOdstraněné číslice: " + s);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string s = textBox6.Text;
+            string nejdelsislovo, nejkratsislovo;
+            if (Metody.ObsahujeSlovo(s, out nejdelsislovo, out nejkratsislovo))
+            {
+                MessageBox.Show("Obsahuje více než jedno slovo");
+                MessageBox.Show("Nejdelší slovo " + nejdelsislovo);
+                MessageBox.Show("Nejkratší slovo " + nejkratsislovo);
+            }
+            else
+            {
+                MessageBox.Show("Řetězec neobsahuje ani jedno slovo");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string s = textBox7.Text;
+            int pocetVelkych, pocetMalych, pocetJinychZnaku;
+            if (Metody.JeAlfanum(s, out pocetMalych, out pocetVelkych, out pocetJinychZnaku))
+            {
+                MessageBox.Show("Je alfanumerický");
+                MessageBox.Show("Počet malých: " + pocetMalych);
+                MessageBox.Show("Počet velkých: " + pocetVelkych);
+                MessageBox.Show("Počet jiných " + pocetJinychZnaku);
+            }
+            else
+            {
+                MessageBox.Show("Není alfanumerický");
+                MessageBox.Show("Počet malých: " + pocetMalych);
+                MessageBox.Show("Počet velkých: " + pocetVelkych);
+                MessageBox.Show("Počet jiných " + pocetJinychZnaku);
+            }
+        }
     }
 }
